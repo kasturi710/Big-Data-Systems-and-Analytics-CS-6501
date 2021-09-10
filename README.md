@@ -14,7 +14,7 @@ I evaluate map-reduce word count program on three datasets:
 * [IMDB Dataset of 50K Movie Reviews](https://www.kaggle.com/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews):~50K records
 * [SMS Spam Collection Dataset](https://www.kaggle.com/uciml/sms-spam-collection-dataset):~5k records
 
-### Execution of word-Count map-reduce program for 'Quora Insincere Questions Classification Dataset':
+### Execution of Word Count map-reduce program for 'Quora Insincere Questions Classification Dataset':
 * First create an input directory in HDFS
 ```
 hadoop fs -mkdir /quora_dataset
@@ -22,11 +22,11 @@ hadoop fs -mkdir /quora_dataset/input
 ```
 * Add file__quora_dataset.txt (containing 100K records) inside the input directory in HDFS.
 ````
-hadoop fs -put './file__quora_dataset.txt' /quora_dataset/input
+hadoop fs -put './datasets/file__quora_dataset.txt' /quora_dataset/input
 ````
-* Run ./word_count_classes/word_count.jar and store the results in an output directory in HDFS.
+* Run .word_count/word_count_classes/word_count.jar and store the results in an output directory in HDFS.
 ````
-hadoop jar word_count.jar WordCount  /quora_dataset/input  /quora_dataset/output
+hadoop jar .word_count/word_count_classes/word_count.jar WordCount  /quora_dataset/input  /quora_dataset/output
 ````
 
 ## Help

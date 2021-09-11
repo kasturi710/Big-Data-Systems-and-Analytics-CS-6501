@@ -14,7 +14,7 @@ I evaluate map-reduce word count program on three datasets:
 * [IMDB Dataset of 50K Movie Reviews](https://www.kaggle.com/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews):~50K records
 * [SMS Spam Collection Dataset](https://www.kaggle.com/uciml/sms-spam-collection-dataset):~5k records
 
-### Execution of Word Count map-reduce program for 'Quora Insincere Questions Classification Dataset':
+### Execution of Word Count map-reduce program for Quora Insincere Questions Classification Dataset:
 * First create an input directory in HDFS
 ```
 hadoop fs -mkdir /quora_dataset
@@ -26,7 +26,36 @@ hadoop fs -put './datasets/file__quora_dataset.txt' /quora_dataset/input
 ````
 * Run .word_count/word_count_classes/word_count.jar and store the results in an output directory in HDFS.
 ````
-hadoop jar .word_count/word_count_classes/word_count.jar WordCount  /quora_dataset/input  /quora_dataset/output
+hadoop jar ./word_count/word_count_classes/word_count.jar WordCount  /quora_dataset/input  /quora_dataset/output
+````
+
+### Execution of Word Count map-reduce program for IMDB Movie Reviews Dataset:
+* First create an input directory in HDFS
+```
+hadoop fs -mkdir /imdb_dataset
+hadoop fs -mkdir /imdb_dataset/input
+```
+* Installl the IMBD dataset from Add file_imdb_dataset.txt (containing 100K records) inside the input directory in HDFS.
+````
+hadoop fs -put './datasets/file_imdb_dataset.txt' /imdb_dataset/input
+````
+* Run ./word_count/word_count_classes/word_count.jar and store the results in an output directory in HDFS.
+````
+hadoop jar ./word_count/word_count_classes/word_count.jar WordCount  /imdb_dataset/input  /imdb_dataset/output
+````
+### Execution of Word Count map-reduce program for SMS Spam Collection Dataset:
+* First create an input directory in HDFS
+```
+hadoop fs -mkdir /spam_dataset
+hadoop fs -mkdir /spam_dataset/input
+```
+* Add file_quora_dataset.txt (containing 5K records) inside the input directory in HDFS.
+````
+hadoop fs -put './datasets/file_spam_dataset.txt' /spam_dataset/input
+````
+* Run ./word_count/word_count_classes/word_count.jar and store the results in an output directory in HDFS.
+````
+hadoop jar ./word_count/word_count_classes/word_count.jar WordCount  /spam_dataset/input  /spam_dataset/output
 ````
 
 ## Help

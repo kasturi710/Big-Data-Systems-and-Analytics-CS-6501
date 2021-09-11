@@ -35,7 +35,7 @@ hadoop jar ./word_count/word_count_classes/word_count.jar WordCount  /quora_data
 hadoop fs -mkdir /imdb_dataset
 hadoop fs -mkdir /imdb_dataset/input
 ```
-* Installl the IMBD dataset from the link :::::: and create a txt file (datasets/file_imdb_dataset.txt) of all the 100K reviews. Add file_imdb_dataset.txt (containing 100K records) inside the input directory in HDFS.
+* Installl the IMBD dataset from the (link)[https://drive.google.com/file/d/15Az12-R3TJIhYbs1oSXAo1ee4wWa0Q43/view?usp=sharing] and create a txt file (datasets/file_imdb_dataset.txt) of all the 100K reviews. Add file_imdb_dataset.txt (containing 100K records) inside the input directory in HDFS.
 ````
 hadoop fs -put './datasets/file_imdb_dataset.txt' /imdb_dataset/input
 ````
@@ -58,7 +58,7 @@ hadoop fs -put './datasets/file_spam_dataset.txt' /spam_dataset/input
 hadoop jar ./word_count/word_count_classes/word_count.jar WordCount  /spam_dataset/input  /spam_dataset/output
 ````
 ## Task 2: Top K frequently occuring words in N files
-We take 20 large text files given in the link ::::::::: and add it to the folder 20_Files. Our aim is to calculate top 100 most frequently occuring words in these files. We have 3 implementations for this problem.
+We take 20 large text files given in the (link )::::::::: and add it to the folder 20_Files. Our aim is to calculate top 100 most frequently occuring words in these files. We have 3 implementations for this problem.
 ### Solution 1:
 This is a basic solution. We simply implement the Work count program for our 20 files given above and find the top 100 most frequntly occuring words using the command below:
 ````

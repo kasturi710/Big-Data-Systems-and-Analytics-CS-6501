@@ -4,18 +4,18 @@ This project aims to analyse the Hadoop map-reduce framework and explore followi
 * Count word frequency for a given dataset
 * Top K frequently occuring words in N files
 
-I explore these problems for different datasets and different implementations of Map-Reduce program, and provide a comparitive analysis.
+We explore these problems for different datasets and different implementations of Map-Reduce program, and establish a comparitive analysis.
 ## Pre-requisites
 * Ensure that Hadoop is installed. We use single-node setup for the execution of the above programs. More Details: [Single Node Setup](https://github.com/matiassingers/awesome-readme).
 
 ## Task 1: Word Count Program
-I evaluate map-reduce word count program on three datasets:
+We evaluate map-reduce word count program on three datasets:
 * [Quora Insincere Questions Classification Dataset](https://drive.google.com/file/d/1fcip8PgsrX7m4AFgvUPLaac5pZ79mpwX/view):~100K records
 * [IMDB Dataset of 50K Movie Reviews](https://www.kaggle.com/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews):~50K records
 * [SMS Spam Collection Dataset](https://www.kaggle.com/uciml/sms-spam-collection-dataset):~5k records
 
 ### Execution of Word Count map-reduce program for Quora Insincere Questions Classification Dataset:
-* First create an input directory in HDFS
+* First, create an input directory in HDFS
 ```
 hadoop fs -mkdir /quora_dataset
 hadoop fs -mkdir /quora_dataset/input
@@ -24,41 +24,28 @@ hadoop fs -mkdir /quora_dataset/input
 ````
 hadoop fs -put './datasets/file_quora_dataset.txt' /quora_dataset/input
 ````
-* Run .word_count/word_count_classes/word_count.jar and store the results in an output directory in HDFS.
+* Run ./word_count/word_count_classes/word_count.jar and store the results in an output directory in HDFS.
 ````
 hadoop jar ./word_count/word_count_classes/word_count.jar WordCount  /quora_dataset/input  /quora_dataset/output
 ````
 
 ### Execution of Word Count map-reduce program for IMDB Movie Reviews Dataset:
-* First create an input directory in HDFS
+* Installl the IMBD dataset from the [link](https://drive.google.com/file/d/15Az12-R3TJIhYbs1oSXAo1ee4wWa0Q43/view?usp=sharing) and create a txt file (datasets/file_imdb_dataset.txt) of all the 100K reviews. Add file_imdb_dataset.txt (containing 100K records) inside the input directory in HDFS.
 ```
 hadoop fs -mkdir /imdb_dataset
 hadoop fs -mkdir /imdb_dataset/input
-```
-* Installl the IMBD dataset from the (link)[https://drive.google.com/file/d/15Az12-R3TJIhYbs1oSXAo1ee4wWa0Q43/view?usp=sharing] and create a txt file (datasets/file_imdb_dataset.txt) of all the 100K reviews. Add file_imdb_dataset.txt (containing 100K records) inside the input directory in HDFS.
-````
 hadoop fs -put './datasets/file_imdb_dataset.txt' /imdb_dataset/input
-````
-* Run ./word_count/word_count_classes/word_count.jar and store the results in an output directory in HDFS.
-````
 hadoop jar ./word_count/word_count_classes/word_count.jar WordCount  /imdb_dataset/input  /imdb_dataset/output
 ````
 ### Execution of Word Count map-reduce program for SMS Spam Collection Dataset:
-* First create an input directory in HDFS
 ```
 hadoop fs -mkdir /spam_dataset
 hadoop fs -mkdir /spam_dataset/input
-```
-* Add file_quora_dataset.txt (containing 5K records) inside the input directory in HDFS.
-````
 hadoop fs -put './datasets/file_spam_dataset.txt' /spam_dataset/input
-````
-* Run ./word_count/word_count_classes/word_count.jar and store the results in an output directory in HDFS.
-````
 hadoop jar ./word_count/word_count_classes/word_count.jar WordCount  /spam_dataset/input  /spam_dataset/output
 ````
 ## Task 2: Top K frequently occuring words in N files
-We take 20 large text files given in the (link )::::::::: and add it to the folder 20_Files. Our aim is to calculate top 100 most frequently occuring words in these files. We have 3 implementations for this problem.
+We take 20 large text files given in the [link](https://drive.google.com/drive/folders/19UyEyHkaQiaWhC5eSKatHMEiptq8y-Wm?usp=sharing) and add it to the folder 20_Files. Our aim is to calculate top 100 most frequently occuring words in these files. We have 3 implementations for this problem.
 ### Solution 1:
 This is a basic solution. We simply implement the Work count program for our 20 files given above and find the top 100 most frequntly occuring words using the command below:
 ````

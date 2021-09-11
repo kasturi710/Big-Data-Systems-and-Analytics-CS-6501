@@ -85,7 +85,7 @@ We first map all the words as <w1,1>, <w2,1>,<w3,1> ...<wn,1>. At reducer, we re
 hadoop fs -mkdir /Top_100_part_3
 hadoop fs -mkdir /Top_100_part_3/input
 hadoop fs -put './20_Files' /Top_100_part_3/input
-hadoop jar ./top_100/top_100_classes_part_3/top_100_count.jar TopKWordCountDriver  /Top_100_part_3/input/20_Files  /Top_100_part_3/output
+hadoop jar ./top_100/top_100_classes_part_2/top_100_count.jar TopKWordCountDriver  /Top_100_part_3/input/20_Files  /Top_100_part_3/output
 ````
 ## Help
 

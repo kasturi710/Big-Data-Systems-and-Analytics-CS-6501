@@ -88,7 +88,7 @@ hadoop fs -put './20_Files' /Top_100_part_3/input
 hadoop jar ./top_100/top_100_classes_part_2/top_100_count.jar TopKWordCountDriver  /Top_100_part_3/input/20_Files  /Top_100_part_3/output
 ````
 ## ANALYSIS
-ANALYSIS REPORT for the above tasks, incuding screenshot of the outputs can be found (here)[https://docs.google.com/document/d/1-gSAqs-JRaHHa1SIXK0lj9rKKVfbTWxE9iRRJ_Wu52c/edit?usp=sharing] 
+ANALYSIS REPORT for the above tasks, incuding screenshot of the outputs can be found [here](https://docs.google.com/document/d/1-gSAqs-JRaHHa1SIXK0lj9rKKVfbTWxE9iRRJ_Wu52c/edit?usp=sharing) 
 ## Acknowledgments
-Following link was helpul while completing the project (HADOOP OFFICIAL TUTORIAL)[https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html]
+Following link was helpul while completing the project [HADOOP OFFICIAL TUTORIAL](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html)
 

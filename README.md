@@ -20,9 +20,9 @@ I evaluate map-reduce word count program on three datasets:
 hadoop fs -mkdir /quora_dataset
 hadoop fs -mkdir /quora_dataset/input
 ```
-* Add file__quora_dataset.txt (containing 100K records) inside the input directory in HDFS.
+* Add file_quora_dataset.txt (containing 100K records) inside the input directory in HDFS.
 ````
-hadoop fs -put './datasets/file__quora_dataset.txt' /quora_dataset/input
+hadoop fs -put './datasets/file_quora_dataset.txt' /quora_dataset/input
 ````
 * Run .word_count/word_count_classes/word_count.jar and store the results in an output directory in HDFS.
 ````
@@ -35,7 +35,7 @@ hadoop jar ./word_count/word_count_classes/word_count.jar WordCount  /quora_data
 hadoop fs -mkdir /imdb_dataset
 hadoop fs -mkdir /imdb_dataset/input
 ```
-* Installl the IMBD dataset from Add file_imdb_dataset.txt (containing 100K records) inside the input directory in HDFS.
+* Installl the IMBD dataset from the link provided abov e and create a txt file (datasets/file_imdb_dataset.txt) of all the 100K reviews. Add file_imdb_dataset.txt (containing 100K records) inside the input directory in HDFS.
 ````
 hadoop fs -put './datasets/file_imdb_dataset.txt' /imdb_dataset/input
 ````

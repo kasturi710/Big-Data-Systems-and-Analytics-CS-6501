@@ -47,7 +47,7 @@ hadoop jar ./word_count/word_count_classes/word_count.jar WordCount  /spam_datas
 ## Task 2: Top K frequently occuring words in N files
 We take 20 large text files given in the [link](https://drive.google.com/drive/folders/19UyEyHkaQiaWhC5eSKatHMEiptq8y-Wm?usp=sharing) and add it to the folder 20_Files. Our aim is to calculate top 100 most frequently occuring words in these files. We have 3 implementations for this problem.
 ### Solution 1:
-This is a basic solution. We simply implement the Work count program for our 20 files given above and find the top 100 most frequntly occuring words using the command below:
+This is a basic solution. We simply implement the word count program for our 20 files given above and find the top 100 most frequntly occuring words using the command:
 ````
 hadoop fs -mkdir /Top_100
 hadoop fs -mkdir /Top_100/input
@@ -56,9 +56,9 @@ hadoop jar ./word_count/word_count_classes/word_count.jar WordCount /Top_100/inp
 hadoop fs -cat  /top_100_words/output/* | sort -n -k2 -r | head -n100
 ````
 ### Solution 2:
-We map all words in 20 files to <1,w1>, <1,w2>, <1,w3>, <1,w4>..... <1,wn>. Further, the reducer receives <1,\[w1,w2,w3....wn\]>.
-We use a HashMap in the reducer to maintain the count of all the words in the form <w1,c1>,<w2,c2>,<w3,c3>...<wn,cn>. 
-Finally, we add all the entries of the hasmap to a treemap in the form <c1,w1> <c2,w2> <c3,w3>...<cn,wn>, to sort the entries according to their count. Finally we write the top 100 values from the treemap.
+We map all words in 20 files to <1,w1>, <1,w2>, <1,w3>, <1,w4>..... <1,wn>. The reducer receives <1,\[w1,w2,w3....wn\]>.
+We maintain a HashMap in the reducer to store the count of all the words in the form <w1,c1>,<w2,c2>,<w3,c3>...<wn,cn>. 
+Then, we add all the entries of the hashmap to a treemap in the form <c1,w1> <c2,w2> <c3,w3>...<cn,wn> to sort the entries according to their count. Finally, we write the top 100 values from the treemap.
 ````
 hadoop fs -mkdir /Top_100_part_2
 hadoop fs -mkdir /Top_100_part_2/input
@@ -67,7 +67,7 @@ hadoop jar ./top_100/top_100_classes/top_100_count.jar Top100WordCountDriver  /T
 
 ````
 ### Solution 3 (OPTIMAL):
-We first map all the words as <w1,1>, <w2,1>,<w3,1> ...<wn,1>. At reducer, we receive <w1,\[c11,c12,c12\]>,<w2,\[c21,c22\]> ...<wn,\[cn1,cnn2..\]> where c11, c12, c13 belong to the counts of w1 and so on. Further, we mainitain a TreeMap of size 100 inside the reducer context. As we evealuate the word count at reducer <wk, Ck>, we add <Ck,wk> to the tree map. As soon as the size of TreeMap crosses 100, we pop the minimum element. This way we are left with top 100 elements in the TreeMap after proceesing. While context cleanup, we write all the elements from our treemap. 
+We first map all the words as <w1,1>, <w2,1>,<w3,1> ...<wn,1>. At reducer, we receive <w1,\[1,1,1\]>,<w2,\[1,1\]> ...<wn,\[1,1..\]> where c11, c12, c13.Further, we mainitain a TreeMap of size 100 inside the reducer context. As we evaluate the word count at reducer <wk, Ck>, we add <Ck,wk> to the tree map. As soon as the size of TreeMap crosses 100, we pop the minimum element. This way we are left with the top 100 elements in the TreeMap after proceesing. Finally, during context cleanup, we write all the elements from our treemap. 
 ````
 hadoop fs -mkdir /Top_100_part_3
 hadoop fs -mkdir /Top_100_part_3/input
@@ -75,7 +75,7 @@ hadoop fs -put './20_Files' /Top_100_part_3/input
 hadoop jar ./top_100/top_100_classes_part_2/top_100_count.jar TopKWordCountDriver  /Top_100_part_3/input/20_Files  /Top_100_part_3/output
 ````
 ## ANALYSIS
-ANnalysis report for the above tasks, including screenshot of the outputs can be found [here](https://docs.google.com/document/d/1-gSAqs-JRaHHa1SIXK0lj9rKKVfbTWxE9iRRJ_Wu52c/edit?usp=sharing) 
+Analysis report for the above tasks, including screenshot of the outputs can be found [here](https://docs.google.com/document/d/1-gSAqs-JRaHHa1SIXK0lj9rKKVfbTWxE9iRRJ_Wu52c/edit?usp=sharing) 
 ## Acknowledgments
 Following link was helpul while completing the project [HADOOP OFFICIAL TUTORIAL](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html)
 
